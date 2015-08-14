@@ -1,0 +1,12 @@
+<resources>
+
+    <color name="material_indigo">#3f51b5</color>
+    <color name="material_indigo_dark">#1a237e</color>
+    <color name="material_indigo_light">#7986cb</color>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+
+</resources>

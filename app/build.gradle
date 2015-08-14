@@ -1,0 +1,31 @@
+apply plugin: 'com.android.application'
+def MOVIE_API_KEY = '"' + MOVIEDATABASE_API_KEY + '"' ?: '"Missing The Movie DB API Key"';
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        applicationId "br.felipe.movieapp"
+        minSdkVersion 18
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        all {
+            buildConfigField 'String', 'MOVIE_API_KEY', MOVIE_API_KEY
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+repositories {
+    mavenCentral()
+}
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:22.2.1'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+}
