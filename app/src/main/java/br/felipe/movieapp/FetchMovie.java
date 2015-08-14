@@ -16,22 +16,22 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-import br.felipe.movieapp.interfaces.Fetcher;
+import br.felipe.movieapp.interfaces.Connector;
 
 /**
  * Created by Felipe on 04/08/2015.
  */
 public class FetchMovie extends AsyncTask<Void, Void, ArrayList<Movie>>{
 
-    private Fetcher fetcher;
+    private Connector connector;
     private String order;
 
-    public Fetcher getFetcher() {
-        return fetcher;
+    public Connector getConnector() {
+        return connector;
     }
 
-    public void setFetcher(Fetcher fetcher) {
-        this.fetcher = fetcher;
+    public void setConnector(Connector connector) {
+        this.connector = connector;
     }
 
     static final String TAG = "movieApp.FetchMovie";
@@ -113,7 +113,7 @@ public class FetchMovie extends AsyncTask<Void, Void, ArrayList<Movie>>{
     @Override
     protected void onPostExecute(ArrayList<Movie> movieList) {
         super.onPostExecute(movieList);
-        fetcher.onConnectionResult(movieList);
+        connector.onConnectionResult(movieList);
     }
 
 
@@ -121,18 +121,18 @@ public class FetchMovie extends AsyncTask<Void, Void, ArrayList<Movie>>{
 
 
         JSONObject movieJson = new JSONObject(responseJsonString);
-        JSONArray jsonMovieList = movieJson.getJSONArray(Fetcher.JSON_RESULT);
+        JSONArray jsonMovieList = movieJson.getJSONArray(Connector.JSON_RESULT);
 
         ArrayList<Movie> movieList = new ArrayList<>();
 
         for(int i = 0; i < jsonMovieList.length(); i++){
             Movie movie = new Movie();
-            movie.setId(jsonMovieList.getJSONObject(i).getString(Fetcher.JSON_ID));
-            movie.setPosterUrl(jsonMovieList.getJSONObject(i).getString(Fetcher.JSON_POSTER_URL));
-            movie.setRating(jsonMovieList.getJSONObject(i).getString(Fetcher.JSON_RATING));
-            movie.setReleaseDate(jsonMovieList.getJSONObject(i).getString(Fetcher.JSON_RELEASE_DATE));
-            movie.setSynopsis(jsonMovieList.getJSONObject(i).getString(Fetcher.JSON_SYNOPSIS));
-            movie.setTitle(jsonMovieList.getJSONObject(i).getString(Fetcher.JSON_TITLE));
+            movie.setId(jsonMovieList.getJSONObject(i).getString(Connector.JSON_ID));
+            movie.setPosterUrl(jsonMovieList.getJSONObject(i).getString(Connector.JSON_POSTER_URL));
+            movie.setRating(jsonMovieList.getJSONObject(i).getString(Connector.JSON_RATING));
+            movie.setReleaseDate(jsonMovieList.getJSONObject(i).getString(Connector.JSON_RELEASE_DATE));
+            movie.setSynopsis(jsonMovieList.getJSONObject(i).getString(Connector.JSON_SYNOPSIS));
+            movie.setTitle(jsonMovieList.getJSONObject(i).getString(Connector.JSON_TITLE));
             movieList.add(movie);
         }
 

@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import com.squareup.picasso.Picasso;
 import br.felipe.movieapp.Movie;
 import br.felipe.movieapp.R;
-import br.felipe.movieapp.interfaces.Fetcher;
+import br.felipe.movieapp.interfaces.Connector;
 
 /**
  * Created by Felipe on 05/08/2015.
@@ -35,7 +35,7 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
         }
         String url = getItem(position).getPosterUrl();
 
-        Picasso.with(context).load(Fetcher.BASE_POSTER_URL+url).placeholder(context.getResources().getDrawable(R.mipmap.loading)).error(context.getResources().getDrawable(R.mipmap.error)).into(view);
+        Picasso.with(context).load(Connector.BASE_POSTER_URL+url).placeholder(context.getResources().getDrawable(R.mipmap.loading)).error(context.getResources().getDrawable(R.mipmap.error)).into(view);
 
         return view;
     }

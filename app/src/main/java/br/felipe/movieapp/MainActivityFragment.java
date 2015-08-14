@@ -18,15 +18,13 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
-
 import br.felipe.movieapp.activities.MovieDetailActivity;
 import br.felipe.movieapp.adapters.MovieAdapter;
-import br.felipe.movieapp.interfaces.Fetcher;
+import br.felipe.movieapp.interfaces.Connector;
 
 
-public class MainActivityFragment extends Fragment implements Fetcher {
+public class MainActivityFragment extends Fragment implements Connector {
 
     static final String PREF_ORDER = "order";
 
@@ -75,7 +73,7 @@ public class MainActivityFragment extends Fragment implements Fetcher {
         checkConnection();
         adapter.clear();
         FetchMovie fm = new FetchMovie();
-        fm.setFetcher(this);
+        fm.setConnector(this);
         fm.setOrder(order);
         fm.execute();
     }

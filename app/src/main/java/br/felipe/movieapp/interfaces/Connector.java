@@ -7,7 +7,7 @@ import br.felipe.movieapp.Movie;
 /**
  * Created by felip on 05/08/2015.
  */
-public interface Fetcher {
+public interface Connector {
 
     String BASE_POSTER_URL = "http://image.tmdb.org/t/p/w342/";
     String JSON_RESULT = "results";
