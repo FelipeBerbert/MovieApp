@@ -89,7 +89,7 @@ public class MainActivityFragment extends Fragment implements Connector {
 
     @Override
     public void onConnectionResult(ArrayList<Movie> movieList) {
-        if (movieList != null && movieList.size() > 0) {
+        if (movieList != null && movieList.size() >  0) {
             filmGrid.setVisibility(View.VISIBLE);
             noDataText.setVisibility(View.GONE);
             for (Movie movie : movieList) {
