@@ -13,6 +13,7 @@ import com.squareup.picasso.Picasso;
 
 import br.felipe.movieapp.Movie;
 import br.felipe.movieapp.R;
+import br.felipe.movieapp.Utils;
 import br.felipe.movieapp.interfaces.Connector;
 
 /**
@@ -56,7 +57,7 @@ public class MovieDetailFragment extends Fragment {
     private void setViews() {
         if(movie != null) {
             movieTitle.setText(movie.getTitle());
-            Picasso.with(getActivity()).load(Connector.BASE_POSTER_URL + movie.getPosterUrl()).placeholder(getActivity().getResources().getDrawable(R.mipmap.loading)).error(getActivity().getResources().getDrawable(R.mipmap.error)).into(moviePoster);
+            Picasso.with(getActivity()).load(Utils.getMoviePosterUrl(getActivity()) + movie.getPosterUrl()).placeholder(getActivity().getResources().getDrawable(R.mipmap.loading)).error(getActivity().getResources().getDrawable(R.mipmap.error)).into(moviePoster);
             movieRelease.setText(movie.getReleaseDate());
             movieRating.setText(movie.getRating());
             movieSynopsis.setText(movie.getSynopsis());

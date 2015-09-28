@@ -5,11 +5,13 @@ import java.util.ArrayList;
 import br.felipe.movieapp.Movie;
 
 /**
- * Created by felip on 05/08/2015.
+ * Created by felipe on 05/08/2015.
+ *
  */
 public interface Connector {
 
-    String BASE_POSTER_URL = "http://image.tmdb.org/t/p/w342/";
+    String BASE_POSTER_URL_BIG = "http://image.tmdb.org/t/p/w500/";
+    String BASE_POSTER_URL_SMALL = "http://image.tmdb.org/t/p/w185/";
     String JSON_RESULT = "results";
     String JSON_SYNOPSIS = "overview";
     String JSON_TITLE = "title";
