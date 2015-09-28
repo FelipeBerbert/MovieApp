@@ -24,15 +24,16 @@ import br.felipe.movieapp.adapters.MovieAdapter;
 import br.felipe.movieapp.interfaces.Connector;
 
 
-public class MainActivityFragment extends Fragment implements Connector {
+public class MovieGridFragment extends Fragment implements Connector {
 
     static final String PREF_ORDER = "order";
 
     GridView filmGrid;
     MovieAdapter adapter;
     TextView noDataText;
+    boolean isTabletLayout;
 
-    public MainActivityFragment() {
+    public MovieGridFragment() {
     }
 
     @Override
@@ -55,8 +56,11 @@ public class MainActivityFragment extends Fragment implements Connector {
         filmGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(getActivity(), MovieDetailActivity.class).putExtra(getString(R.string.app_package) + ".MovieObject", adapter.getItem(i));
-                startActivity(intent);
+                Movie movie = adapter.getItem(i);
+                if(movie != null)
+                    ((Callback) getActivity()).onItemSelected(movie);
+                //Intent intent = new Intent(getActivity(), MovieDetailActivity.class).putExtra(getString(R.string.app_package) + ".MovieObject", adapter.getItem(i));
+                //startActivity(intent);
             }
         });
         return rootView;
@@ -81,10 +85,12 @@ public class MainActivityFragment extends Fragment implements Connector {
     @Override
     public void onConfigurationChanged(Configuration newConfiguration) {
         super.onConfigurationChanged(newConfiguration);
-        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
-            filmGrid.setNumColumns(5);
-        else
-            filmGrid.setNumColumns(3);
+        if(!isTabletLayout) {
+            if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
+                filmGrid.setNumColumns(5);
+            else
+                filmGrid.setNumColumns(3);
+        }
     }
 
     @Override
@@ -142,4 +148,13 @@ public class MainActivityFragment extends Fragment implements Connector {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void setIsTabletLayout(boolean isTabletLayout) {
+        this.isTabletLayout = isTabletLayout;
+    }
+
+    public interface Callback {
+        public void onItemSelected(Movie movie);
+    }
+
 }

@@ -7,11 +7,11 @@
 
     <GridView
         android:id="@+id/film_grid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_centerInParent="true"
         android:numColumns="3"/>
+
     <TextView
         android:id="@+id/no_data_text"
         android:layout_width="match_parent"

@@ -18,17 +18,18 @@ import br.felipe.movieapp.interfaces.Connector;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class MovieDetailActivityFragment extends Fragment {
+public class MovieDetailFragment extends Fragment {
+
+    public static final String MOVIE = "movie";
 
     Movie movie;
-
     TextView movieTitle;
     ImageView moviePoster;
     TextView movieRating;
     TextView movieSynopsis;
     TextView movieRelease;
 
-    public MovieDetailActivityFragment() {
+    public MovieDetailFragment() {
     }
 
     @Override
@@ -37,7 +38,12 @@ public class MovieDetailActivityFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_movie_detail, container, false);
 
-        movie = getActivity().getIntent().getParcelableExtra(getString(R.string.app_package)+".MovieObject");
+        Bundle args = getArguments();
+        if(args != null){
+            movie = args.getParcelable(MOVIE);
+        }
+        //movie = getActivity().getIntent().getParcelableExtra(getString(R.string.app_package) + ".MovieObject");
+
         movieTitle = (TextView) rootView.findViewById(R.id.movie_title_text);
         moviePoster = (ImageView) rootView.findViewById(R.id.movie_poster_iv);
         movieRating = (TextView) rootView.findViewById(R.id.movie_rating);

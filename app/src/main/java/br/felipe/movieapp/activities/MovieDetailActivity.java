@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import br.felipe.movieapp.MovieGridFragment;
 import br.felipe.movieapp.R;
+import br.felipe.movieapp.fragments.MovieDetailFragment;
 
 public class MovieDetailActivity extends AppCompatActivity {
 
@@ -13,6 +15,13 @@ public class MovieDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_detail);
+        if(savedInstanceState == null){
+            Bundle args = new Bundle();
+            args.putParcelable(MovieDetailFragment.MOVIE,getIntent().getParcelableExtra(getString(R.string.app_package)+".MovieObject"));
+            MovieDetailFragment df = new MovieDetailFragment();
+            df.setArguments(args);
+            getSupportFragmentManager().beginTransaction().add(R.id.frag_movie_detail, df).commit();
+        }
 
     }
 

@@ -1,16 +1,39 @@
 package br.felipe.movieapp;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+import br.felipe.movieapp.activities.MovieDetailActivity;
+import br.felipe.movieapp.fragments.MovieDetailFragment;
+
+public class MainActivity extends AppCompatActivity implements MovieGridFragment.Callback {
+
+    private static final String MOVIEDETAILFRAGMENT_TAG = "MOVIEDETAILFRAGTAG";
+
+    boolean isTabletLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if(findViewById(R.id.frag_movie_detail) != null) {
+            isTabletLayout = true;
+
+            if (savedInstanceState == null) {
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.frag_movie_detail, new MovieDetailFragment(), MOVIEDETAILFRAGMENT_TAG)
+                        .commit();
+            }
+        } else {
+            isTabletLayout = false;
+        }
+        MovieGridFragment movieGridFragment = (MovieGridFragment) getSupportFragmentManager().findFragmentById(R.id.frag_movie_grid);
+        movieGridFragment.setIsTabletLayout(isTabletLayout);
+
     }
 
 
@@ -34,5 +57,20 @@ public class MainActivity extends AppCompatActivity {
 
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
+    public void onItemSelected(Movie movie) {
+        if (isTabletLayout) {
+            MovieDetailFragment movieDetailFragment = new MovieDetailFragment();
+            Bundle args = new Bundle();
+            args.putParcelable(MovieDetailFragment.MOVIE, movie);
+            movieDetailFragment.setArguments(args);
+            getSupportFragmentManager().beginTransaction().replace(R.id.frag_movie_detail, movieDetailFragment, MOVIEDETAILFRAGMENT_TAG).commit();
+        } else {
+            Intent intent = new Intent(this, MovieDetailActivity.class).putExtra(getString(R.string.app_package) + ".MovieObject", movie);
+            startActivity(intent);
+        }
     }
 }
