@@ -1,8 +1,6 @@
 package br.felipe.movieapp.interfaces;
 
-import java.util.ArrayList;
-
-import br.felipe.movieapp.Movie;
+import br.felipe.movieapp.connection.MovieResponse;
 
 /**
  * Created by felipe on 05/08/2015.
@@ -22,6 +20,6 @@ public interface Connector {
     String JSON_RATING = "vote_average";
 
 
-    void onConnectionResult(ArrayList<Movie> Movies);
+    void onConnectionResult(MovieResponse Movies);
 
 }

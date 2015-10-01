@@ -1,7 +1,6 @@
-package br.felipe.movieapp;
+package br.felipe.movieapp.fragments;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -18,9 +17,12 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
-import java.util.ArrayList;
-import br.felipe.movieapp.activities.MovieDetailActivity;
+
+import br.felipe.movieapp.Movie;
+import br.felipe.movieapp.R;
 import br.felipe.movieapp.adapters.MovieAdapter;
+import br.felipe.movieapp.connection.FetchMovie;
+import br.felipe.movieapp.connection.MovieResponse;
 import br.felipe.movieapp.interfaces.Connector;
 
 
@@ -73,7 +75,7 @@ public class MovieGridFragment extends Fragment implements Connector {
     }
 
     private void fetchMovies() {
-        String order = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString(PREF_ORDER,FetchMovie.PARAMETER_VALUE_POP);
+        String order = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString(PREF_ORDER, FetchMovie.PARAMETER_VALUE_POP);
         checkConnection();
         adapter.clear();
         FetchMovie fm = new FetchMovie();
@@ -94,11 +96,11 @@ public class MovieGridFragment extends Fragment implements Connector {
     }
 
     @Override
-    public void onConnectionResult(ArrayList<Movie> movieList) {
-        if (movieList != null && movieList.size() >  0) {
+    public void onConnectionResult(MovieResponse movieList) {
+        if (movieList != null && movieList.results.length >  0) {
             filmGrid.setVisibility(View.VISIBLE);
             noDataText.setVisibility(View.GONE);
-            for (Movie movie : movieList) {
+            for (Movie movie : movieList.results) {
                 adapter.add(movie);
             }
         }else{

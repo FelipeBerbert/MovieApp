@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import br.felipe.movieapp.MovieGridFragment;
 import br.felipe.movieapp.R;
 import br.felipe.movieapp.fragments.MovieDetailFragment;
 

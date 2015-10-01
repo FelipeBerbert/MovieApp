@@ -8,8 +8,7 @@ import android.widget.ImageView;
 import com.squareup.picasso.Picasso;
 import br.felipe.movieapp.Movie;
 import br.felipe.movieapp.R;
-import br.felipe.movieapp.Utils;
-import br.felipe.movieapp.interfaces.Connector;
+import br.felipe.movieapp.utils.Utils;
 
 /**
  * Created by Felipe on 05/08/2015.
@@ -34,7 +33,7 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
         }else{
             view = (ImageView) convertView;
         }
-        String url = getItem(position).getPosterUrl();
+        String url = getItem(position).getPoster_path();
         String posterURL = Utils.getMoviePosterUrl(context);
         Picasso.with(context).load(posterURL + url).placeholder(context.getResources().getDrawable(R.mipmap.loading)).error(context.getResources().getDrawable(R.mipmap.error)).into(view);
 

@@ -1,4 +1,4 @@
-package br.felipe.movieapp;
+package br.felipe.movieapp.utils;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

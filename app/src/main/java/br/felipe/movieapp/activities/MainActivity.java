@@ -1,13 +1,14 @@
-package br.felipe.movieapp;
+package br.felipe.movieapp.activities;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import br.felipe.movieapp.activities.MovieDetailActivity;
+import br.felipe.movieapp.Movie;
+import br.felipe.movieapp.fragments.MovieGridFragment;
+import br.felipe.movieapp.R;
 import br.felipe.movieapp.fragments.MovieDetailFragment;
 
 public class MainActivity extends AppCompatActivity implements MovieGridFragment.Callback {

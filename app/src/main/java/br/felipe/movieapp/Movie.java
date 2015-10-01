@@ -11,10 +11,10 @@ public class Movie implements Parcelable {
 
     private String id;
     private String title;
-    private String synopsis;
-    private String releaseDate;
-    private String rating;
-    private String posterUrl;
+    private String overview;
+    private String release_date;
+    private String vote_average;
+    private String poster_path;
 
     public Movie(){
 
@@ -25,10 +25,10 @@ public class Movie implements Parcelable {
         parcel.readStringArray(params);
         this.id = params[0];
         this.title = params[1];
-        this.synopsis = params[2];
-        this.releaseDate = params[3];
-        this.rating = params[4];
-        this.posterUrl = params[5];
+        this.overview = params[2];
+        this.release_date = params[3];
+        this.vote_average = params[4];
+        this.poster_path = params[5];
 
     }
 
@@ -40,36 +40,36 @@ public class Movie implements Parcelable {
         this.title = title;
     }
 
-    public String getPosterUrl() {
-        return posterUrl;
+    public String getPoster_path() {
+        return poster_path;
     }
 
-    public void setPosterUrl(String posterUrl) {
-        this.posterUrl = posterUrl;
+    public void setPoster_path(String poster_path) {
+        this.poster_path = poster_path;
     }
 
-    public String getSynopsis() {
-        return synopsis;
+    public String getOverview() {
+        return overview;
     }
 
-    public void setSynopsis(String synopsis) {
-        this.synopsis = synopsis;
+    public void setOverview(String overview) {
+        this.overview = overview;
     }
 
-    public String getRating() {
-        return rating;
+    public String getVote_average() {
+        return vote_average;
     }
 
-    public void setRating(String rating) {
-        this.rating = rating;
+    public void setVote_average(String vote_average) {
+        this.vote_average = vote_average;
     }
 
-    public String getReleaseDate() {
-        return releaseDate;
+    public String getRelease_date() {
+        return release_date;
     }
 
-    public void setReleaseDate(String releaseDate) {
-        this.releaseDate = releaseDate;
+    public void setRelease_date(String release_date) {
+        this.release_date = release_date;
     }
 
     public String getId() {
@@ -87,7 +87,7 @@ public class Movie implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeStringArray(new String[]{this.id,this.title,this.synopsis,this.releaseDate,this.rating,this.posterUrl});
+        dest.writeStringArray(new String[]{this.id,this.title,this.overview,this.release_date,this.vote_average,this.poster_path});
     }
     public static final Parcelable.Creator<Movie> CREATOR = new Parcelable.Creator<Movie>(){
         @Override
