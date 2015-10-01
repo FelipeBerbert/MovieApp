@@ -11,6 +11,7 @@ import br.felipe.movieapp.Movie;
 public interface Connector {
 
     String BASE_POSTER_URL_BIG = "http://image.tmdb.org/t/p/w500/";
+    String BASE_POSTER_URL_MEDIUM = "http://image.tmdb.org/t/p/w342/";
     String BASE_POSTER_URL_SMALL = "http://image.tmdb.org/t/p/w185/";
     String JSON_RESULT = "results";
     String JSON_SYNOPSIS = "overview";

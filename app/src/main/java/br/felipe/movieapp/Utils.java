@@ -18,7 +18,7 @@ public class Utils {
 
     public static String getMoviePosterUrl(Context context){
         if(getWifi(context))
-            return Connector.BASE_POSTER_URL_BIG;
+            return Connector.BASE_POSTER_URL_MEDIUM;
         else
             return Connector.BASE_POSTER_URL_SMALL;
     }
