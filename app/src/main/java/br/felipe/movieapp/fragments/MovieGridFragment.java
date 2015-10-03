@@ -18,7 +18,7 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import br.felipe.movieapp.Movie;
+import br.felipe.movieapp.models.Movie;
 import br.felipe.movieapp.R;
 import br.felipe.movieapp.adapters.MovieAdapter;
 import br.felipe.movieapp.connection.FetchMovie;
@@ -96,11 +96,11 @@ public class MovieGridFragment extends Fragment implements Connector {
     }
 
     @Override
-    public void onConnectionResult(MovieResponse movieList) {
-        if (movieList != null && movieList.results.length >  0) {
+    public void onConnectionResult(Object movieList) {
+        if (movieList != null && ((MovieResponse)movieList).results.length >  0) {
             filmGrid.setVisibility(View.VISIBLE);
             noDataText.setVisibility(View.GONE);
-            for (Movie movie : movieList.results) {
+            for (Movie movie : ((MovieResponse)movieList).results) {
                 adapter.add(movie);
             }
         }else{

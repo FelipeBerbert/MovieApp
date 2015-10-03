@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import br.felipe.movieapp.Movie;
+import br.felipe.movieapp.models.Movie;
 import br.felipe.movieapp.fragments.MovieGridFragment;
 import br.felipe.movieapp.R;
 import br.felipe.movieapp.fragments.MovieDetailFragment;

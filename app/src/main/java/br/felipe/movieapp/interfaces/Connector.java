@@ -1,5 +1,7 @@
 package br.felipe.movieapp.interfaces;
 
+import java.util.Objects;
+
 import br.felipe.movieapp.connection.MovieResponse;
 
 /**
@@ -8,18 +10,15 @@ import br.felipe.movieapp.connection.MovieResponse;
  */
 public interface Connector {
 
+    String API_URL = "https://api.themoviedb.org/3";
     String BASE_POSTER_URL_BIG = "http://image.tmdb.org/t/p/w500/";
     String BASE_POSTER_URL_MEDIUM = "http://image.tmdb.org/t/p/w342/";
     String BASE_POSTER_URL_SMALL = "http://image.tmdb.org/t/p/w185/";
-    String JSON_RESULT = "results";
-    String JSON_SYNOPSIS = "overview";
-    String JSON_TITLE = "title";
-    String JSON_ID = "id";
-    String JSON_POSTER_URL = "poster_path";
-    String JSON_RELEASE_DATE = "release_date";
-    String JSON_RATING = "vote_average";
+    String YOUTUBE_THUMB_URL = "https://img.youtube.com/vi/%s/0.jpg";
+    String YOUTUBE_VIDEO_URL = "https://www.youtube.com/watch?v=";
 
 
-    void onConnectionResult(MovieResponse Movies);
+
+    void onConnectionResult(Object object);
 
 }

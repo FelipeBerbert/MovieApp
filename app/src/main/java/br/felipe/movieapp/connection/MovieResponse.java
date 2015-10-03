@@ -1,6 +1,6 @@
 package br.felipe.movieapp.connection;
 
-import br.felipe.movieapp.Movie;
+import br.felipe.movieapp.models.Movie;
 
 /**
  * Created by felip on 30/09/2015.

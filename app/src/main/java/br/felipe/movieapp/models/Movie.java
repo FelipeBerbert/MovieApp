@@ -1,4 +1,4 @@
-package br.felipe.movieapp;
+package br.felipe.movieapp.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;

@@ -6,19 +6,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
 import com.squareup.picasso.Picasso;
 
-import br.felipe.movieapp.Movie;
+import br.felipe.movieapp.adapters.ReviewAdapter;
+import br.felipe.movieapp.adapters.TrailerAdapter;
+import br.felipe.movieapp.connection.FetchMovieInfo;
+import br.felipe.movieapp.models.Movie;
 import br.felipe.movieapp.R;
 import br.felipe.movieapp.interfaces.Connector;
+import br.felipe.movieapp.models.MovieInfo;
+import br.felipe.movieapp.models.Review;
+import br.felipe.movieapp.models.Video;
 
 /**
  * A placeholder fragment containing a simple view.
  */
-public class MovieDetailFragment extends Fragment {
+public class MovieDetailFragment extends Fragment implements Connector {
 
     public static final String MOVIE = "movie";
 
@@ -28,6 +35,12 @@ public class MovieDetailFragment extends Fragment {
     TextView movieRating;
     TextView movieSynopsis;
     TextView movieRelease;
+    LinearLayout listTrailersLl;
+    TrailerAdapter trailerAdapter;
+    ReviewAdapter reviewAdapter;
+    LinearLayout trailersLl;
+    LinearLayout listReviewsLl;
+    LinearLayout reviewsLl;
 
     public MovieDetailFragment() {
     }
@@ -49,8 +62,26 @@ public class MovieDetailFragment extends Fragment {
         movieRating = (TextView) rootView.findViewById(R.id.movie_rating);
         movieSynopsis = (TextView) rootView.findViewById(R.id.movie_synopse_text);
         movieRelease = (TextView) rootView.findViewById(R.id.movie_release_text);
+        listTrailersLl = (LinearLayout) rootView.findViewById(R.id.list_trailers_ll);
+        trailersLl = (LinearLayout) rootView.findViewById(R.id.trailers_ll);
+        listReviewsLl = (LinearLayout) rootView.findViewById(R.id.list_reviews_ll);
+        reviewsLl = (LinearLayout) rootView.findViewById(R.id.reviews_ll);
+
+
+        trailerAdapter = new TrailerAdapter(getActivity(), R.layout.trailer_item_view);
+        reviewAdapter = new ReviewAdapter(getActivity(), R.layout.review_item_view);
+        //trailersLv.setAdapter(trailerAdapter);
+
         setViews();
+        if (movie != null)
+            getMovieInfo(movie.getId());
         return rootView;
+    }
+
+    private void getMovieInfo(String id) {
+        FetchMovieInfo fmi = new FetchMovieInfo();
+        fmi.setConnector(this);
+        fmi.execute(id);
     }
 
     private void setViews() {
@@ -66,4 +97,26 @@ public class MovieDetailFragment extends Fragment {
     }
 
 
+    @Override
+    public void onConnectionResult(Object movieInfo) {
+
+        Video[] trailers = ((MovieInfo) movieInfo).getVideoResponse();
+        Review[] reviews = ((MovieInfo) movieInfo).getReviewResponse();
+        if(trailers != null && trailers.length > 0) {
+            trailersLl.setVisibility(View.VISIBLE);
+            for (Video video : trailers) {
+                if(video.getSite().toLowerCase().equals("youtube")) {
+                    trailerAdapter.add(video);
+                    trailersLl.addView(trailerAdapter.getView(trailerAdapter.getCount() - 1, null, null));
+                }
+            }
+        }
+        if(reviews != null && reviews.length > 0) {
+            reviewsLl.setVisibility(View.VISIBLE);
+            for (Review review : reviews) {
+                reviewAdapter.add(review);
+                reviewsLl.addView(reviewAdapter.getView(reviewAdapter.getCount()-1, null, null));
+            }
+        }
+    }
 }

@@ -43,25 +43,25 @@
                     android:id="@+id/movie_poster_iv"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
-                    android:layout_margin="4dp"
                     android:contentDescription="@string/poster_desc" />
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
                         android:background="@color/material_indigo"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:layout_margin="4dp"
                         android:padding="4dp">
 
                         <TextView
@@ -84,18 +84,18 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="4dp"
                         android:layout_margin="4dp"
-                        android:gravity="center"
                         android:background="@color/material_indigo"
-                        android:orientation="vertical">
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="4dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="18sp"
+                            android:text="@string/rating_label"
                             android:textColor="@android:color/white"
-                            android:text="@string/rating_label"/>
+                            android:textSize="18sp" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -106,30 +106,83 @@
                                 android:id="@+id/movie_rating"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@android:color/white"
-                                android:fontFamily="sans-serif-condensed" />
+                                android:fontFamily="sans-serif-condensed"
+                                android:textColor="@android:color/white" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="sans-serif-condensed"
-                                android:textColor="@android:color/white"
-                                android:text="@string/max_rating_label" />
+                                android:text="@string/max_rating_label"
+                                android:textColor="@android:color/white" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
 
             </LinearLayout>
 
+
             <TextView
                 android:id="@+id/movie_synopse_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="20dp" />
-            <ListView
-                android:id="@+id/trailer_layout"
+
+            <LinearLayout
+                android:id="@+id/trailers_ll"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginTop="4dp"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:text="@string/trailers_label" />
+
+                <LinearLayout
+                    android:id="@+id/list_trailers_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/reviews_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginTop="4dp"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:text="@string/reviews_label"/>
+
+                <LinearLayout
+                    android:id="@+id/list_reviews_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"/>
+            </LinearLayout>
 
         </LinearLayout>
 
