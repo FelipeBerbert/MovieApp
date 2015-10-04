@@ -82,33 +82,33 @@ public class VideoSelection extends AbstractSelection<VideoSelection> {
         return orderById(false);
     }
 
-    public VideoSelection videoId(long... value) {
-        addEquals(VideoColumns.VIDEO_ID, toObjectArray(value));
+    public VideoSelection videoId(String... value) {
+        addEquals(VideoColumns.VIDEO_ID, value);
         return this;
     }
 
-    public VideoSelection videoIdNot(long... value) {
-        addNotEquals(VideoColumns.VIDEO_ID, toObjectArray(value));
+    public VideoSelection videoIdNot(String... value) {
+        addNotEquals(VideoColumns.VIDEO_ID, value);
         return this;
     }
 
-    public VideoSelection videoIdGt(long value) {
-        addGreaterThan(VideoColumns.VIDEO_ID, value);
+    public VideoSelection videoIdLike(String... value) {
+        addLike(VideoColumns.VIDEO_ID, value);
         return this;
     }
 
-    public VideoSelection videoIdGtEq(long value) {
-        addGreaterThanOrEquals(VideoColumns.VIDEO_ID, value);
+    public VideoSelection videoIdContains(String... value) {
+        addContains(VideoColumns.VIDEO_ID, value);
         return this;
     }
 
-    public VideoSelection videoIdLt(long value) {
-        addLessThan(VideoColumns.VIDEO_ID, value);
+    public VideoSelection videoIdStartsWith(String... value) {
+        addStartsWith(VideoColumns.VIDEO_ID, value);
         return this;
     }
 
-    public VideoSelection videoIdLtEq(long value) {
-        addLessThanOrEquals(VideoColumns.VIDEO_ID, value);
+    public VideoSelection videoIdEndsWith(String... value) {
+        addEndsWith(VideoColumns.VIDEO_ID, value);
         return this;
     }
 

@@ -17,8 +17,10 @@ public interface VideoModel extends BaseModel {
 
     /**
      * Get the {@code video_id} value.
+     * Cannot be {@code null}.
      */
-    long getVideoId();
+    @NonNull
+    String getVideoId();
 
     /**
      * Name of the video.

@@ -32,9 +32,11 @@ public class VideoCursor extends AbstractCursor implements VideoModel {
 
     /**
      * Get the {@code video_id} value.
+     * Cannot be {@code null}.
      */
-    public long getVideoId() {
-        Long res = getLongOrNull(VideoColumns.VIDEO_ID);
+    @NonNull
+    public String getVideoId() {
+        String res = getStringOrNull(VideoColumns.VIDEO_ID);
         if (res == null)
             throw new NullPointerException("The value of 'video_id' in the database was null, which is not allowed according to the model definition");
         return res;

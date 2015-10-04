@@ -42,7 +42,8 @@ public class VideoContentValues extends AbstractContentValues {
         return context.getContentResolver().update(uri(), values(), where == null ? null : where.sel(), where == null ? null : where.args());
     }
 
-    public VideoContentValues putVideoId(long value) {
+    public VideoContentValues putVideoId(@NonNull String value) {
+        if (value == null) throw new IllegalArgumentException("videoId must not be null");
         mContentValues.put(VideoColumns.VIDEO_ID, value);
         return this;
     }
