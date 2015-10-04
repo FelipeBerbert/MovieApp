@@ -117,6 +117,24 @@
                                 android:textColor="@android:color/white" />
                         </LinearLayout>
                     </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/favorite_ll"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:background="@color/material_indigo"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="4dp">
+                        <TextView
+                            android:id="@+id/favorite_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/white"
+                            android:gravity="center"
+                            android:textSize="18sp"
+                            android:text="@string/mark_favorite_label"/>
+                        </LinearLayout>
                 </LinearLayout>
 
             </LinearLayout>

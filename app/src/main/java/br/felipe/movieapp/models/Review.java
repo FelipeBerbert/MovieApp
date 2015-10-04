@@ -8,6 +8,7 @@ public class Review {
     private String author;
     private String content;
     private String url;
+    //private long movieId;
 
     public String getId() {
         return id;
@@ -40,4 +41,12 @@ public class Review {
     public void setUrl(String url) {
         this.url = url;
     }
+
+    /*public long getMovieId() {
+        return movieId;
+    }
+
+    public void setMovieId(long movieId) {
+        this.movieId = movieId;
+    }*/
 }

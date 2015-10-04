@@ -14,11 +14,11 @@ public interface RestConnections {
                               @Query("api_key") String apiKey);
 
     @GET("/movie/{id}/videos")
-    VideoResponse fetchVideos(@Path("id") String id,
+    VideoResponse fetchVideos(@Path("id") long id,
                               @Query("api_key") String apiKey);
 
     @GET("/movie/{id}/reviews")
-    ReviewResponse fetchReviews(@Path("id") String id,
+    ReviewResponse fetchReviews(@Path("id") long id,
                                 @Query("api_key") String apiKey);
 
 

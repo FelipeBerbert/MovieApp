@@ -9,12 +9,13 @@ import android.os.Parcelable;
 public class Movie implements Parcelable {
 
 
-    private String id;
+    private long id;
     private String title;
     private String overview;
     private String release_date;
     private String vote_average;
     private String poster_path;
+    private long internal_id;
 
     public Movie(){
 
@@ -23,7 +24,7 @@ public class Movie implements Parcelable {
     public Movie(Parcel parcel){
         String[] params = new String[6];
         parcel.readStringArray(params);
-        this.id = params[0];
+        this.id = Long.valueOf(params[0]);
         this.title = params[1];
         this.overview = params[2];
         this.release_date = params[3];
@@ -72,12 +73,20 @@ public class Movie implements Parcelable {
         this.release_date = release_date;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
+    }
+
+    public long getInternal_id() {
+        return internal_id;
+    }
+
+    public void setInternal_id(long internal_id) {
+        this.internal_id = internal_id;
     }
 
     @Override
@@ -87,7 +96,7 @@ public class Movie implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeStringArray(new String[]{this.id,this.title,this.overview,this.release_date,this.vote_average,this.poster_path});
+        dest.writeStringArray(new String[]{String.valueOf(this.id),this.title,this.overview,this.release_date,this.vote_average,this.poster_path});
     }
     public static final Parcelable.Creator<Movie> CREATOR = new Parcelable.Creator<Movie>(){
         @Override

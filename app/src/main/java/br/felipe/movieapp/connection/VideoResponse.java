@@ -7,6 +7,7 @@ import br.felipe.movieapp.models.Video;
  */
 public class VideoResponse {
 
+    private long id;
     private Video[] results;
 
     public Video[] getResults() {
@@ -15,5 +16,13 @@ public class VideoResponse {
 
     public void setResults(Video[] results) {
         this.results = results;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }

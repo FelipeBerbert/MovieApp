@@ -10,6 +10,7 @@ public class Video {
     private String site;
     private String type;
     private String key;
+    //private long movieId;
 
 
     public String getId() {
@@ -51,4 +52,12 @@ public class Video {
     public void setKey(String key) {
         this.key = key;
     }
+
+    /*public long getMovieId() {
+        return movieId;
+    }
+
+    public void setMovieId(long movieId) {
+        this.movieId = movieId;
+    }*/
 }

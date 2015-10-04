@@ -3,6 +3,7 @@
     <color name="material_indigo">#3f51b5</color>
     <color name="material_indigo_dark">#1a237e</color>
     <color name="material_indigo_light">#7986cb</color>
+    <color name="material_red_light">#ef5350</color>
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
