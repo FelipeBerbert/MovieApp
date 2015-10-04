@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import br.felipe.movieapp.models.Video;
 import br.felipe.movieapp.provider.base.AbstractCursor;
 import br.felipe.movieapp.provider.movie.*;
 
@@ -82,6 +83,17 @@ public class VideoCursor extends AbstractCursor implements VideoModel {
         return res;
     }
 
+    public Video getVideo() {
+        Video video = new Video();
+        video.setId(getVideoId());
+        video.setKey(getKey());
+        //video.setMovieId(getMovieId());
+        video.setName(getName());
+        video.setSite(getSite());
+        video.setType(getType());
+        return video;
+    }
+
     /**
      * The id of the movie referenced by this video.
      */
@@ -151,4 +163,5 @@ public class VideoCursor extends AbstractCursor implements VideoModel {
         String res = getStringOrNull(MovieColumns.POSTER_PATH);
         return res;
     }
+
 }

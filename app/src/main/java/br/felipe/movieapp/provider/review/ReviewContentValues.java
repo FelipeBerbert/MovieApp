@@ -97,9 +97,9 @@ public class ReviewContentValues extends AbstractContentValues {
         return this;
     }
 
-    public ReviewContentValues putReview(Review value) {
+    public ReviewContentValues putReview(Review value, long movieId) {
         mContentValues.put(ReviewColumns.REVIEW_ID, value.getId());
-        mContentValues.put(ReviewColumns.MOVIE_ID, value.getMovieId());
+        mContentValues.put(ReviewColumns.MOVIE_ID, movieId);
         mContentValues.put(ReviewColumns.AUTHOR, value.getAuthor());
         mContentValues.put(ReviewColumns.CONTENT, value.getContent());
         mContentValues.put(ReviewColumns.URL, value.getUrl());

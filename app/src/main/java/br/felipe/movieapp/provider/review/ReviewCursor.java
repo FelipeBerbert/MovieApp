@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import br.felipe.movieapp.models.Review;
 import br.felipe.movieapp.provider.base.AbstractCursor;
 import br.felipe.movieapp.provider.movie.*;
 
@@ -70,6 +71,16 @@ public class ReviewCursor extends AbstractCursor implements ReviewModel {
     public String getUrl() {
         String res = getStringOrNull(ReviewColumns.URL);
         return res;
+    }
+
+    public Review getReview() {
+        Review review = new Review();
+        review.setId(getReviewId());
+        //review.setMovieId(getMovieId());
+        review.setAuthor(getAuthor());
+        review.setContent(getContent());
+        review.setUrl(getUrl());
+        return review;
     }
 
     /**

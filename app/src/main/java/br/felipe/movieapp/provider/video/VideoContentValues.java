@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import br.felipe.movieapp.models.Video;
 import br.felipe.movieapp.provider.base.AbstractContentValues;
 
 /**
@@ -109,4 +110,13 @@ public class VideoContentValues extends AbstractContentValues {
         return this;
     }
 
+    public VideoContentValues putVideo(Video value, long movieId) {
+        mContentValues.put(VideoColumns.VIDEO_ID, value.getId());
+        mContentValues.put(VideoColumns.MOVIE_ID, movieId);
+        mContentValues.put(VideoColumns.KEY, value.getKey());
+        mContentValues.put(VideoColumns.NAME, value.getName());
+        mContentValues.put(VideoColumns.SITE, value.getSite());
+        mContentValues.put(VideoColumns.TYPE, value.getType());
+        return this;
+    }
 }
