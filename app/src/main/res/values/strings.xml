@@ -4,6 +4,7 @@
     <string name="action_settings">Settings</string>
     <string name="action_order_pop">Order by popularity</string>
     <string name="action_order_rating">Order by ratings</string>
+    <string name="action_order_favorites">Show favorites</string>
     <string name="title_activity_movie_detail">MovieDetailActivity</string>
     <string name="no_data">No data.</string>
     <string name="connection_error">It was not possible to establish connection.</string>

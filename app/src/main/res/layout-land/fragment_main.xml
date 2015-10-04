@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/black"
     tools:context=".MainActivityFragment">
 
     <GridView
@@ -18,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
+        android:textColor="@android:color/white"
         android:textSize="@dimen/abc_text_size_large_material"
         android:text="@string/no_data"/>
 </RelativeLayout>

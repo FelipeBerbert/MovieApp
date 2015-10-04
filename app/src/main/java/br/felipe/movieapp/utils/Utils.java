@@ -13,6 +13,7 @@ public class Utils {
 
     public static boolean getWifi(Context context){
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager.getActiveNetworkInfo() == null) return false;
         return connectivityManager.getActiveNetworkInfo().getType() == ConnectivityManager.TYPE_WIFI;
     }
 

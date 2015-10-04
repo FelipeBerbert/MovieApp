@@ -80,9 +80,10 @@ public class MovieDetailFragment extends Fragment implements Connector {
         trailerAdapter = new TrailerAdapter(getActivity(), R.layout.trailer_item_view);
         reviewAdapter = new ReviewAdapter(getActivity(), R.layout.review_item_view);
         //trailersLv.setAdapter(trailerAdapter);
-        isFavorite();
-        setViews();
+
         if (movie != null){
+            isFavorite();
+            setViews();
             getMovieInfo(movie.getId());
         }
 

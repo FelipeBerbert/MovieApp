@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import br.felipe.movieapp.models.Movie;
 import br.felipe.movieapp.provider.base.AbstractCursor;
 
 /**
@@ -87,5 +88,16 @@ public class MovieCursor extends AbstractCursor implements MovieModel {
     public String getPosterPath() {
         String res = getStringOrNull(MovieColumns.POSTER_PATH);
         return res;
+    }
+
+    public Movie getMovie(){
+        Movie movie = new Movie();
+        movie.setId(getExternalId());
+        movie.setOverview(getOverview());
+        movie.setPoster_path(getPosterPath());
+        movie.setRelease_date(getReleaseDate());
+        movie.setTitle(getTitle());
+        movie.setVote_average(getVoteAvarage());
+        return movie;
     }
 }

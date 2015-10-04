@@ -24,11 +24,14 @@ import br.felipe.movieapp.adapters.MovieAdapter;
 import br.felipe.movieapp.connection.FetchMovie;
 import br.felipe.movieapp.connection.MovieResponse;
 import br.felipe.movieapp.interfaces.Connector;
+import br.felipe.movieapp.provider.movie.MovieCursor;
+import br.felipe.movieapp.provider.movie.MovieSelection;
 
 
 public class MovieGridFragment extends Fragment implements Connector {
 
     static final String PREF_ORDER = "order";
+    static final String PARAMETER_VALUE_FAVORITES = "favorite";
 
     GridView filmGrid;
     MovieAdapter adapter;
@@ -59,7 +62,7 @@ public class MovieGridFragment extends Fragment implements Connector {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Movie movie = adapter.getItem(i);
-                if(movie != null)
+                if (movie != null)
                     ((Callback) getActivity()).onItemSelected(movie);
                 //Intent intent = new Intent(getActivity(), MovieDetailActivity.class).putExtra(getString(R.string.app_package) + ".MovieObject", adapter.getItem(i));
                 //startActivity(intent);
@@ -76,12 +79,16 @@ public class MovieGridFragment extends Fragment implements Connector {
 
     private void fetchMovies() {
         String order = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString(PREF_ORDER, FetchMovie.PARAMETER_VALUE_POP);
-        checkConnection();
-        adapter.clear();
-        FetchMovie fm = new FetchMovie();
-        fm.setConnector(this);
-        fm.setOrder(order);
-        fm.execute();
+        if(order.equals(PARAMETER_VALUE_FAVORITES)){
+            fetchFavorites();
+        }else {
+            checkConnection();
+            adapter.clear();
+            FetchMovie fm = new FetchMovie();
+            fm.setConnector(this);
+            fm.setOrder(order);
+            fm.execute();
+        }
     }
 
     @Override
@@ -93,6 +100,21 @@ public class MovieGridFragment extends Fragment implements Connector {
             else
                 filmGrid.setNumColumns(3);
         }
+    }
+
+    private void fetchFavorites(){
+        MovieSelection where = new MovieSelection();
+        MovieCursor cursor = where.query(getActivity().getContentResolver());
+        adapter.clear();
+        if(cursor.moveToFirst()) {
+            filmGrid.setVisibility(View.VISIBLE);
+            noDataText.setVisibility(View.GONE);
+            adapter.add(cursor.getMovie());
+            while (cursor.moveToNext()) {
+                adapter.add(cursor.getMovie());
+            }
+        }
+        cursor.close();
     }
 
     @Override
@@ -144,6 +166,11 @@ public class MovieGridFragment extends Fragment implements Connector {
         }
         if (id == R.id.action_order_rating){
             PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString(PREF_ORDER, FetchMovie.PARAMETER_VALUE_RATING).commit();
+            fetchMovies();
+            return true;
+        }
+        if (id == R.id.action_order_favorites){
+            PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString(PREF_ORDER, PARAMETER_VALUE_FAVORITES).commit();
             fetchMovies();
             return true;
         }
