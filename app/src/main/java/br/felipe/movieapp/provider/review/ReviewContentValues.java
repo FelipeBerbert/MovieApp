@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import br.felipe.movieapp.models.Review;
 import br.felipe.movieapp.provider.base.AbstractContentValues;
 
 /**
@@ -93,6 +94,15 @@ public class ReviewContentValues extends AbstractContentValues {
      */
     public ReviewContentValues putMovieId(long value) {
         mContentValues.put(ReviewColumns.MOVIE_ID, value);
+        return this;
+    }
+
+    public ReviewContentValues putReview(Review value) {
+        mContentValues.put(ReviewColumns.REVIEW_ID, value.getId());
+        mContentValues.put(ReviewColumns.MOVIE_ID, value.getMovieId());
+        mContentValues.put(ReviewColumns.AUTHOR, value.getAuthor());
+        mContentValues.put(ReviewColumns.CONTENT, value.getContent());
+        mContentValues.put(ReviewColumns.URL, value.getUrl());
         return this;
     }
 
