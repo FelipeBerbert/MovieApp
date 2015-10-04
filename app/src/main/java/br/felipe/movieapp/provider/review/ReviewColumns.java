@@ -23,6 +23,8 @@ public class ReviewColumns implements BaseColumns {
      */
     public static final String _ID = BaseColumns._ID;
 
+    public static final String REVIEW_ID = "review_id";
+
     /**
      * Author of the review.
      */
@@ -49,6 +51,7 @@ public class ReviewColumns implements BaseColumns {
     // @formatter:off
     public static final String[] ALL_COLUMNS = new String[] {
             _ID,
+            REVIEW_ID,
             AUTHOR,
             CONTENT,
             URL,
@@ -59,6 +62,7 @@ public class ReviewColumns implements BaseColumns {
     public static boolean hasColumns(String[] projection) {
         if (projection == null) return true;
         for (String c : projection) {
+            if (c.equals(REVIEW_ID) || c.contains("." + REVIEW_ID)) return true;
             if (c.equals(AUTHOR) || c.contains("." + AUTHOR)) return true;
             if (c.equals(CONTENT) || c.contains("." + CONTENT)) return true;
             if (c.equals(URL) || c.contains("." + URL)) return true;

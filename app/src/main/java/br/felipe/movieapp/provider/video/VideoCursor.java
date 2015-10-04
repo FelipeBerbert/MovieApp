@@ -31,6 +31,16 @@ public class VideoCursor extends AbstractCursor implements VideoModel {
     }
 
     /**
+     * Get the {@code video_id} value.
+     */
+    public long getVideoId() {
+        Long res = getLongOrNull(VideoColumns.VIDEO_ID);
+        if (res == null)
+            throw new NullPointerException("The value of 'video_id' in the database was null, which is not allowed according to the model definition");
+        return res;
+    }
+
+    /**
      * Name of the video.
      * Can be {@code null}.
      */
@@ -77,6 +87,16 @@ public class VideoCursor extends AbstractCursor implements VideoModel {
         Long res = getLongOrNull(VideoColumns.MOVIE_ID);
         if (res == null)
             throw new NullPointerException("The value of 'movie_id' in the database was null, which is not allowed according to the model definition");
+        return res;
+    }
+
+    /**
+     * Get the {@code external_id} value.
+     */
+    public long getMovieExternalId() {
+        Long res = getLongOrNull(MovieColumns.EXTERNAL_ID);
+        if (res == null)
+            throw new NullPointerException("The value of 'external_id' in the database was null, which is not allowed according to the model definition");
         return res;
     }
 

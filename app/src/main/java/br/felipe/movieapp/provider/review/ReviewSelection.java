@@ -82,6 +82,46 @@ public class ReviewSelection extends AbstractSelection<ReviewSelection> {
         return orderById(false);
     }
 
+    public ReviewSelection reviewId(long... value) {
+        addEquals(ReviewColumns.REVIEW_ID, toObjectArray(value));
+        return this;
+    }
+
+    public ReviewSelection reviewIdNot(long... value) {
+        addNotEquals(ReviewColumns.REVIEW_ID, toObjectArray(value));
+        return this;
+    }
+
+    public ReviewSelection reviewIdGt(long value) {
+        addGreaterThan(ReviewColumns.REVIEW_ID, value);
+        return this;
+    }
+
+    public ReviewSelection reviewIdGtEq(long value) {
+        addGreaterThanOrEquals(ReviewColumns.REVIEW_ID, value);
+        return this;
+    }
+
+    public ReviewSelection reviewIdLt(long value) {
+        addLessThan(ReviewColumns.REVIEW_ID, value);
+        return this;
+    }
+
+    public ReviewSelection reviewIdLtEq(long value) {
+        addLessThanOrEquals(ReviewColumns.REVIEW_ID, value);
+        return this;
+    }
+
+    public ReviewSelection orderByReviewId(boolean desc) {
+        orderBy(ReviewColumns.REVIEW_ID, desc);
+        return this;
+    }
+
+    public ReviewSelection orderByReviewId() {
+        orderBy(ReviewColumns.REVIEW_ID, false);
+        return this;
+    }
+
     public ReviewSelection author(String... value) {
         addEquals(ReviewColumns.AUTHOR, value);
         return this;
@@ -239,6 +279,46 @@ public class ReviewSelection extends AbstractSelection<ReviewSelection> {
 
     public ReviewSelection orderByMovieId() {
         orderBy(ReviewColumns.MOVIE_ID, false);
+        return this;
+    }
+
+    public ReviewSelection movieExternalId(long... value) {
+        addEquals(MovieColumns.EXTERNAL_ID, toObjectArray(value));
+        return this;
+    }
+
+    public ReviewSelection movieExternalIdNot(long... value) {
+        addNotEquals(MovieColumns.EXTERNAL_ID, toObjectArray(value));
+        return this;
+    }
+
+    public ReviewSelection movieExternalIdGt(long value) {
+        addGreaterThan(MovieColumns.EXTERNAL_ID, value);
+        return this;
+    }
+
+    public ReviewSelection movieExternalIdGtEq(long value) {
+        addGreaterThanOrEquals(MovieColumns.EXTERNAL_ID, value);
+        return this;
+    }
+
+    public ReviewSelection movieExternalIdLt(long value) {
+        addLessThan(MovieColumns.EXTERNAL_ID, value);
+        return this;
+    }
+
+    public ReviewSelection movieExternalIdLtEq(long value) {
+        addLessThanOrEquals(MovieColumns.EXTERNAL_ID, value);
+        return this;
+    }
+
+    public ReviewSelection orderByMovieExternalId(boolean desc) {
+        orderBy(MovieColumns.EXTERNAL_ID, desc);
+        return this;
+    }
+
+    public ReviewSelection orderByMovieExternalId() {
+        orderBy(MovieColumns.EXTERNAL_ID, false);
         return this;
     }
 

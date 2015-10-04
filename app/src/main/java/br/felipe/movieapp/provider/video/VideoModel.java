@@ -11,9 +11,14 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 /**
- * Review
+ * Video
  */
 public interface VideoModel extends BaseModel {
+
+    /**
+     * Get the {@code video_id} value.
+     */
+    long getVideoId();
 
     /**
      * Name of the video.

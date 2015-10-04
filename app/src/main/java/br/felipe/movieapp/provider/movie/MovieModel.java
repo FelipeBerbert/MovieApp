@@ -16,6 +16,11 @@ import android.support.annotation.Nullable;
 public interface MovieModel extends BaseModel {
 
     /**
+     * Get the {@code external_id} value.
+     */
+    long getExternalId();
+
+    /**
      * Title of the movie.
      * Can be {@code null}.
      */

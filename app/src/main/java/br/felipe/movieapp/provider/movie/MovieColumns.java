@@ -23,6 +23,8 @@ public class MovieColumns implements BaseColumns {
      */
     public static final String _ID = BaseColumns._ID;
 
+    public static final String EXTERNAL_ID = "external_id";
+
     /**
      * Title of the movie.
      */
@@ -54,6 +56,7 @@ public class MovieColumns implements BaseColumns {
     // @formatter:off
     public static final String[] ALL_COLUMNS = new String[] {
             _ID,
+            EXTERNAL_ID,
             TITLE,
             OVERVIEW,
             RELEASE_DATE,
@@ -65,6 +68,7 @@ public class MovieColumns implements BaseColumns {
     public static boolean hasColumns(String[] projection) {
         if (projection == null) return true;
         for (String c : projection) {
+            if (c.equals(EXTERNAL_ID) || c.contains("." + EXTERNAL_ID)) return true;
             if (c.equals(TITLE) || c.contains("." + TITLE)) return true;
             if (c.equals(OVERVIEW) || c.contains("." + OVERVIEW)) return true;
             if (c.equals(RELEASE_DATE) || c.contains("." + RELEASE_DATE)) return true;

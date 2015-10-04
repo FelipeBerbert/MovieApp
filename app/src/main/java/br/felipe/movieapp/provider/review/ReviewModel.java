@@ -16,6 +16,11 @@ import android.support.annotation.Nullable;
 public interface ReviewModel extends BaseModel {
 
     /**
+     * Get the {@code review_id} value.
+     */
+    long getReviewId();
+
+    /**
      * Author of the review.
      * Can be {@code null}.
      */

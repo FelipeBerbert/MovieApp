@@ -30,33 +30,48 @@ public class MovieSQLiteOpenHelper extends SQLiteOpenHelper {
     public static final String SQL_CREATE_TABLE_MOVIE = "CREATE TABLE IF NOT EXISTS "
             + MovieColumns.TABLE_NAME + " ( "
             + MovieColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + MovieColumns.EXTERNAL_ID + " INTEGER NOT NULL, "
             + MovieColumns.TITLE + " TEXT, "
             + MovieColumns.OVERVIEW + " TEXT, "
             + MovieColumns.RELEASE_DATE + " TEXT, "
             + MovieColumns.VOTE_AVARAGE + " TEXT, "
             + MovieColumns.POSTER_PATH + " TEXT "
+            + ", CONSTRAINT unique_id UNIQUE (movie_id) ON CONFLICT REPLACE"
             + " );";
+
+    public static final String SQL_CREATE_INDEX_MOVIE_EXTERNAL_ID = "CREATE INDEX IDX_MOVIE_EXTERNAL_ID "
+            + " ON " + MovieColumns.TABLE_NAME + " ( " + MovieColumns.EXTERNAL_ID + " );";
 
     public static final String SQL_CREATE_TABLE_REVIEW = "CREATE TABLE IF NOT EXISTS "
             + ReviewColumns.TABLE_NAME + " ( "
             + ReviewColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + ReviewColumns.REVIEW_ID + " INTEGER NOT NULL, "
             + ReviewColumns.AUTHOR + " TEXT, "
             + ReviewColumns.CONTENT + " TEXT, "
             + ReviewColumns.URL + " TEXT, "
             + ReviewColumns.MOVIE_ID + " INTEGER NOT NULL "
             + ", CONSTRAINT fk_movie_id FOREIGN KEY (" + ReviewColumns.MOVIE_ID + ") REFERENCES movie (_id) ON DELETE CASCADE"
+            + ", CONSTRAINT unique_id UNIQUE (review_id) ON CONFLICT REPLACE"
             + " );";
+
+    public static final String SQL_CREATE_INDEX_REVIEW_REVIEW_ID = "CREATE INDEX IDX_REVIEW_REVIEW_ID "
+            + " ON " + ReviewColumns.TABLE_NAME + " ( " + ReviewColumns.REVIEW_ID + " );";
 
     public static final String SQL_CREATE_TABLE_VIDEO = "CREATE TABLE IF NOT EXISTS "
             + VideoColumns.TABLE_NAME + " ( "
             + VideoColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + VideoColumns.VIDEO_ID + " INTEGER NOT NULL, "
             + VideoColumns.NAME + " TEXT, "
             + VideoColumns.SITE + " TEXT, "
             + VideoColumns.TYPE + " TEXT, "
             + VideoColumns.KEY + " TEXT, "
             + VideoColumns.MOVIE_ID + " INTEGER NOT NULL "
             + ", CONSTRAINT fk_movie_id FOREIGN KEY (" + VideoColumns.MOVIE_ID + ") REFERENCES movie (_id) ON DELETE CASCADE"
+            + ", CONSTRAINT unique_id UNIQUE (video_id) ON CONFLICT REPLACE"
             + " );";
+
+    public static final String SQL_CREATE_INDEX_VIDEO_VIDEO_ID = "CREATE INDEX IDX_VIDEO_VIDEO_ID "
+            + " ON " + VideoColumns.TABLE_NAME + " ( " + VideoColumns.VIDEO_ID + " );";
 
     // @formatter:on
 
@@ -113,8 +128,11 @@ public class MovieSQLiteOpenHelper extends SQLiteOpenHelper {
         if (BuildConfig.DEBUG) Log.d(TAG, "onCreate");
         mOpenHelperCallbacks.onPreCreate(mContext, db);
         db.execSQL(SQL_CREATE_TABLE_MOVIE);
+        db.execSQL(SQL_CREATE_INDEX_MOVIE_EXTERNAL_ID);
         db.execSQL(SQL_CREATE_TABLE_REVIEW);
+        db.execSQL(SQL_CREATE_INDEX_REVIEW_REVIEW_ID);
         db.execSQL(SQL_CREATE_TABLE_VIDEO);
+        db.execSQL(SQL_CREATE_INDEX_VIDEO_VIDEO_ID);
         mOpenHelperCallbacks.onPostCreate(mContext, db);
     }
 

@@ -12,7 +12,7 @@ import br.felipe.movieapp.provider.review.ReviewColumns;
 import br.felipe.movieapp.provider.video.VideoColumns;
 
 /**
- * Review
+ * Video
  */
 public class VideoColumns implements BaseColumns {
     public static final String TABLE_NAME = "video";
@@ -22,6 +22,8 @@ public class VideoColumns implements BaseColumns {
      * Primary key.
      */
     public static final String _ID = BaseColumns._ID;
+
+    public static final String VIDEO_ID = "video_id";
 
     /**
      * Name of the video.
@@ -54,6 +56,7 @@ public class VideoColumns implements BaseColumns {
     // @formatter:off
     public static final String[] ALL_COLUMNS = new String[] {
             _ID,
+            VIDEO_ID,
             NAME,
             SITE,
             TYPE,
@@ -65,6 +68,7 @@ public class VideoColumns implements BaseColumns {
     public static boolean hasColumns(String[] projection) {
         if (projection == null) return true;
         for (String c : projection) {
+            if (c.equals(VIDEO_ID) || c.contains("." + VIDEO_ID)) return true;
             if (c.equals(NAME) || c.contains("." + NAME)) return true;
             if (c.equals(SITE) || c.contains("." + SITE)) return true;
             if (c.equals(TYPE) || c.contains("." + TYPE)) return true;

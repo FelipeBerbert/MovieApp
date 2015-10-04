@@ -81,6 +81,46 @@ public class MovieSelection extends AbstractSelection<MovieSelection> {
         return orderById(false);
     }
 
+    public MovieSelection externalId(long... value) {
+        addEquals(MovieColumns.EXTERNAL_ID, toObjectArray(value));
+        return this;
+    }
+
+    public MovieSelection externalIdNot(long... value) {
+        addNotEquals(MovieColumns.EXTERNAL_ID, toObjectArray(value));
+        return this;
+    }
+
+    public MovieSelection externalIdGt(long value) {
+        addGreaterThan(MovieColumns.EXTERNAL_ID, value);
+        return this;
+    }
+
+    public MovieSelection externalIdGtEq(long value) {
+        addGreaterThanOrEquals(MovieColumns.EXTERNAL_ID, value);
+        return this;
+    }
+
+    public MovieSelection externalIdLt(long value) {
+        addLessThan(MovieColumns.EXTERNAL_ID, value);
+        return this;
+    }
+
+    public MovieSelection externalIdLtEq(long value) {
+        addLessThanOrEquals(MovieColumns.EXTERNAL_ID, value);
+        return this;
+    }
+
+    public MovieSelection orderByExternalId(boolean desc) {
+        orderBy(MovieColumns.EXTERNAL_ID, desc);
+        return this;
+    }
+
+    public MovieSelection orderByExternalId() {
+        orderBy(MovieColumns.EXTERNAL_ID, false);
+        return this;
+    }
+
     public MovieSelection title(String... value) {
         addEquals(MovieColumns.TITLE, value);
         return this;

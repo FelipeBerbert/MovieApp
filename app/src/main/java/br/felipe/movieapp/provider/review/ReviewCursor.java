@@ -31,6 +31,16 @@ public class ReviewCursor extends AbstractCursor implements ReviewModel {
     }
 
     /**
+     * Get the {@code review_id} value.
+     */
+    public long getReviewId() {
+        Long res = getLongOrNull(ReviewColumns.REVIEW_ID);
+        if (res == null)
+            throw new NullPointerException("The value of 'review_id' in the database was null, which is not allowed according to the model definition");
+        return res;
+    }
+
+    /**
      * Author of the review.
      * Can be {@code null}.
      */
@@ -67,6 +77,16 @@ public class ReviewCursor extends AbstractCursor implements ReviewModel {
         Long res = getLongOrNull(ReviewColumns.MOVIE_ID);
         if (res == null)
             throw new NullPointerException("The value of 'movie_id' in the database was null, which is not allowed according to the model definition");
+        return res;
+    }
+
+    /**
+     * Get the {@code external_id} value.
+     */
+    public long getMovieExternalId() {
+        Long res = getLongOrNull(MovieColumns.EXTERNAL_ID);
+        if (res == null)
+            throw new NullPointerException("The value of 'external_id' in the database was null, which is not allowed according to the model definition");
         return res;
     }
 

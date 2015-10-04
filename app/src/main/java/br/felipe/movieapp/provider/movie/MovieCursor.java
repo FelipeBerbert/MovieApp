@@ -30,6 +30,16 @@ public class MovieCursor extends AbstractCursor implements MovieModel {
     }
 
     /**
+     * Get the {@code external_id} value.
+     */
+    public long getExternalId() {
+        Long res = getLongOrNull(MovieColumns.EXTERNAL_ID);
+        if (res == null)
+            throw new NullPointerException("The value of 'external_id' in the database was null, which is not allowed according to the model definition");
+        return res;
+    }
+
+    /**
      * Title of the movie.
      * Can be {@code null}.
      */

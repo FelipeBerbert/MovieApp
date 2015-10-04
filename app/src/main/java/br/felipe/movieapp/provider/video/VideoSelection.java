@@ -82,6 +82,46 @@ public class VideoSelection extends AbstractSelection<VideoSelection> {
         return orderById(false);
     }
 
+    public VideoSelection videoId(long... value) {
+        addEquals(VideoColumns.VIDEO_ID, toObjectArray(value));
+        return this;
+    }
+
+    public VideoSelection videoIdNot(long... value) {
+        addNotEquals(VideoColumns.VIDEO_ID, toObjectArray(value));
+        return this;
+    }
+
+    public VideoSelection videoIdGt(long value) {
+        addGreaterThan(VideoColumns.VIDEO_ID, value);
+        return this;
+    }
+
+    public VideoSelection videoIdGtEq(long value) {
+        addGreaterThanOrEquals(VideoColumns.VIDEO_ID, value);
+        return this;
+    }
+
+    public VideoSelection videoIdLt(long value) {
+        addLessThan(VideoColumns.VIDEO_ID, value);
+        return this;
+    }
+
+    public VideoSelection videoIdLtEq(long value) {
+        addLessThanOrEquals(VideoColumns.VIDEO_ID, value);
+        return this;
+    }
+
+    public VideoSelection orderByVideoId(boolean desc) {
+        orderBy(VideoColumns.VIDEO_ID, desc);
+        return this;
+    }
+
+    public VideoSelection orderByVideoId() {
+        orderBy(VideoColumns.VIDEO_ID, false);
+        return this;
+    }
+
     public VideoSelection name(String... value) {
         addEquals(VideoColumns.NAME, value);
         return this;
@@ -279,6 +319,46 @@ public class VideoSelection extends AbstractSelection<VideoSelection> {
 
     public VideoSelection orderByMovieId() {
         orderBy(VideoColumns.MOVIE_ID, false);
+        return this;
+    }
+
+    public VideoSelection movieExternalId(long... value) {
+        addEquals(MovieColumns.EXTERNAL_ID, toObjectArray(value));
+        return this;
+    }
+
+    public VideoSelection movieExternalIdNot(long... value) {
+        addNotEquals(MovieColumns.EXTERNAL_ID, toObjectArray(value));
+        return this;
+    }
+
+    public VideoSelection movieExternalIdGt(long value) {
+        addGreaterThan(MovieColumns.EXTERNAL_ID, value);
+        return this;
+    }
+
+    public VideoSelection movieExternalIdGtEq(long value) {
+        addGreaterThanOrEquals(MovieColumns.EXTERNAL_ID, value);
+        return this;
+    }
+
+    public VideoSelection movieExternalIdLt(long value) {
+        addLessThan(MovieColumns.EXTERNAL_ID, value);
+        return this;
+    }
+
+    public VideoSelection movieExternalIdLtEq(long value) {
+        addLessThanOrEquals(MovieColumns.EXTERNAL_ID, value);
+        return this;
+    }
+
+    public VideoSelection orderByMovieExternalId(boolean desc) {
+        orderBy(MovieColumns.EXTERNAL_ID, desc);
+        return this;
+    }
+
+    public VideoSelection orderByMovieExternalId() {
+        orderBy(MovieColumns.EXTERNAL_ID, false);
         return this;
     }
 
