@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import br.felipe.movieapp.models.Movie;
 import br.felipe.movieapp.provider.base.AbstractContentValues;
 
 /**
@@ -110,6 +111,16 @@ public class MovieContentValues extends AbstractContentValues {
 
     public MovieContentValues putPosterPathNull() {
         mContentValues.putNull(MovieColumns.POSTER_PATH);
+        return this;
+    }
+
+    public MovieContentValues putMovie(Movie movie) {
+        mContentValues.put(MovieColumns.EXTERNAL_ID, movie.getId());
+        mContentValues.put(MovieColumns.TITLE, movie.getTitle());
+        mContentValues.put(MovieColumns.OVERVIEW, movie.getOverview());
+        mContentValues.put(MovieColumns.RELEASE_DATE, movie.getRelease_date());
+        mContentValues.put(MovieColumns.VOTE_AVARAGE, movie.getVote_average());
+        mContentValues.put(MovieColumns.POSTER_PATH, movie.getPoster_path());
         return this;
     }
 }

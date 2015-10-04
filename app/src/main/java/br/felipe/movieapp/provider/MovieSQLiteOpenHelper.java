@@ -36,7 +36,7 @@ public class MovieSQLiteOpenHelper extends SQLiteOpenHelper {
             + MovieColumns.RELEASE_DATE + " TEXT, "
             + MovieColumns.VOTE_AVARAGE + " TEXT, "
             + MovieColumns.POSTER_PATH + " TEXT "
-            + ", CONSTRAINT unique_id UNIQUE (movie_id) ON CONFLICT REPLACE"
+            + ", CONSTRAINT unique_id UNIQUE (external_id) ON CONFLICT REPLACE"
             + " );";
 
     public static final String SQL_CREATE_INDEX_MOVIE_EXTERNAL_ID = "CREATE INDEX IDX_MOVIE_EXTERNAL_ID "
