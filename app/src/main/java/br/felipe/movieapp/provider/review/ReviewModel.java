@@ -17,8 +17,10 @@ public interface ReviewModel extends BaseModel {
 
     /**
      * Get the {@code review_id} value.
+     * Cannot be {@code null}.
      */
-    long getReviewId();
+    @NonNull
+    String getReviewId();
 
     /**
      * Author of the review.

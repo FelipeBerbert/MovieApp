@@ -42,7 +42,8 @@ public class ReviewContentValues extends AbstractContentValues {
         return context.getContentResolver().update(uri(), values(), where == null ? null : where.sel(), where == null ? null : where.args());
     }
 
-    public ReviewContentValues putReviewId(long value) {
+    public ReviewContentValues putReviewId(@NonNull String value) {
+        if (value == null) throw new IllegalArgumentException("reviewId must not be null");
         mContentValues.put(ReviewColumns.REVIEW_ID, value);
         return this;
     }

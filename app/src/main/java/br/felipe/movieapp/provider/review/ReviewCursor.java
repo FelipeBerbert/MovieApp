@@ -32,9 +32,11 @@ public class ReviewCursor extends AbstractCursor implements ReviewModel {
 
     /**
      * Get the {@code review_id} value.
+     * Cannot be {@code null}.
      */
-    public long getReviewId() {
-        Long res = getLongOrNull(ReviewColumns.REVIEW_ID);
+    @NonNull
+    public String getReviewId() {
+        String res = getStringOrNull(ReviewColumns.REVIEW_ID);
         if (res == null)
             throw new NullPointerException("The value of 'review_id' in the database was null, which is not allowed according to the model definition");
         return res;

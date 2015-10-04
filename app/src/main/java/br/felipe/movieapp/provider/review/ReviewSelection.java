@@ -82,33 +82,33 @@ public class ReviewSelection extends AbstractSelection<ReviewSelection> {
         return orderById(false);
     }
 
-    public ReviewSelection reviewId(long... value) {
-        addEquals(ReviewColumns.REVIEW_ID, toObjectArray(value));
+    public ReviewSelection reviewId(String... value) {
+        addEquals(ReviewColumns.REVIEW_ID, value);
         return this;
     }
 
-    public ReviewSelection reviewIdNot(long... value) {
-        addNotEquals(ReviewColumns.REVIEW_ID, toObjectArray(value));
+    public ReviewSelection reviewIdNot(String... value) {
+        addNotEquals(ReviewColumns.REVIEW_ID, value);
         return this;
     }
 
-    public ReviewSelection reviewIdGt(long value) {
-        addGreaterThan(ReviewColumns.REVIEW_ID, value);
+    public ReviewSelection reviewIdLike(String... value) {
+        addLike(ReviewColumns.REVIEW_ID, value);
         return this;
     }
 
-    public ReviewSelection reviewIdGtEq(long value) {
-        addGreaterThanOrEquals(ReviewColumns.REVIEW_ID, value);
+    public ReviewSelection reviewIdContains(String... value) {
+        addContains(ReviewColumns.REVIEW_ID, value);
         return this;
     }
 
-    public ReviewSelection reviewIdLt(long value) {
-        addLessThan(ReviewColumns.REVIEW_ID, value);
+    public ReviewSelection reviewIdStartsWith(String... value) {
+        addStartsWith(ReviewColumns.REVIEW_ID, value);
         return this;
     }
 
-    public ReviewSelection reviewIdLtEq(long value) {
-        addLessThanOrEquals(ReviewColumns.REVIEW_ID, value);
+    public ReviewSelection reviewIdEndsWith(String... value) {
+        addEndsWith(ReviewColumns.REVIEW_ID, value);
         return this;
     }
 
