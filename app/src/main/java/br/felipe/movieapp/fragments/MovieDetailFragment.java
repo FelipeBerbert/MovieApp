@@ -1,10 +1,15 @@
 package br.felipe.movieapp.fragments;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.widget.ShareActionProvider;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -43,6 +48,7 @@ import br.felipe.movieapp.provider.video.VideoSelection;
 public class MovieDetailFragment extends Fragment implements Connector {
 
     public static final String MOVIE = "movie";
+    public static final String SHARE_TEXT = "Watch this trailer for %s! ";
 
     Movie movie;
     TextView movieTitle;
@@ -60,6 +66,8 @@ public class MovieDetailFragment extends Fragment implements Connector {
     TextView favoriteText;
 
     boolean isFavorite;
+    private ShareActionProvider shareActionProvider;
+    private String videoShareString;
 
     public MovieDetailFragment() {
     }
@@ -86,7 +94,7 @@ public class MovieDetailFragment extends Fragment implements Connector {
             setViews();
             getMovieInfo(movie.getId());
         }
-
+        setHasOptionsMenu(true);
         return rootView;
     }
 
@@ -222,6 +230,7 @@ public class MovieDetailFragment extends Fragment implements Connector {
     private void fillTrailersView(Video[] trailers) {
         if (trailers != null && trailers.length > 0) {
             trailersLl.setVisibility(View.VISIBLE);
+            videoShareString = String.format(SHARE_TEXT, movie.getTitle()) + Connector.YOUTUBE_VIDEO_URL + trailers[0].getKey();
             for (Video video : trailers) {
                 if (video.getSite().toLowerCase().equals("youtube")) {
                     trailerAdapter.add(video);
@@ -241,5 +250,23 @@ public class MovieDetailFragment extends Fragment implements Connector {
         }
     }
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_movie_detail_fragment, menu);
+        MenuItem item = menu.findItem(R.id.menu_item_share);
+
+        shareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(item);
+        if (shareActionProvider != null) {
+            shareActionProvider.setShareIntent(setShareIntent());
+        }
+    }
+
+    public Intent setShareIntent() {
+        Intent sendIntent = new Intent(Intent.ACTION_SEND);
+        sendIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
+        sendIntent.setType("text/plain");
+        sendIntent.putExtra(Intent.EXTRA_TEXT, videoShareString);
+        return sendIntent;
+    }
 
 }
