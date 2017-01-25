@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+
 def MOVIE_API_KEY = '"' + MOVIEDATABASE_API_KEY + '"' ?: '"Missing The Movie DB API Key"';
 android {
     compileSdkVersion 22
@@ -30,4 +32,9 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.squareup.retrofit:retrofit:1.9.0'
     compile 'com.squareup.okhttp:okhttp:2.2.0'
+
+    // Dagger dependencies
+    apt "com.google.dagger:dagger-compiler:2.2"
+    provided 'org.glassfish:javax.annotation:10.0-b28'
+    compile "com.google.dagger:dagger:2.2"
 }
