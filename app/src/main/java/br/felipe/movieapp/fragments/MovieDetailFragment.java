@@ -134,8 +134,7 @@ public class MovieDetailFragment extends Fragment implements Connector {
             revCursor.close();
             fillReviewsView(reviews);
         } else {
-            FetchMovieInfo fmi = new FetchMovieInfo();
-            fmi.setConnector(this);
+            FetchMovieInfo fmi = new FetchMovieInfo(this);
             fmi.execute(id);
         }
     }

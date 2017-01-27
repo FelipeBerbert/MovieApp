@@ -15,11 +15,11 @@ import br.felipe.movieapp.utils.ServiceGenerator;
  */
 public class FetchMovieInfo extends AsyncTask<Long, Void, MovieInfo>{
 
-    private Connector connector;
-
     public static final String TAG = "movieApp.FetchMovieInfo";
 
-    public void setConnector(Connector connector) {
+    private Connector connector;
+
+    public FetchMovieInfo(Connector connector) {
         this.connector = connector;
     }
 

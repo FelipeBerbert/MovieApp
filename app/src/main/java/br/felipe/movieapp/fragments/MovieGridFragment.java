@@ -84,9 +84,7 @@ public class MovieGridFragment extends Fragment implements Connector {
         }else {
             checkConnection();
             adapter.clear();
-            FetchMovie fm = new FetchMovie();
-            fm.setConnector(this);
-            fm.setOrder(order);
+            FetchMovie fm = new FetchMovie(this, order);
             fm.execute();
         }
     }

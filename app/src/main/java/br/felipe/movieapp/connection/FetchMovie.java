@@ -14,22 +14,15 @@ import br.felipe.movieapp.utils.ServiceGenerator;
  */
 public class FetchMovie extends AsyncTask<Void, Void, MovieResponse> {
 
-    private Connector connector;
-    private String order;
-
-    public Connector getConnector() {
-        return connector;
-    }
-
-    public void setConnector(Connector connector) {
-        this.connector = connector;
-    }
-
     public static final String TAG = "movieApp.FetchMovie";
     public static final String PARAMETER_VALUE_POP = "popularity.desc";
     public static final String PARAMETER_VALUE_RATING = "vote_average.desc";
 
-    public void setOrder(String order) {
+    private Connector connector;
+    private String order;
+
+    public FetchMovie(Connector connector, String order) {
+        this.connector = connector;
         this.order = order;
     }
 
