@@ -1,4 +1,4 @@
-package br.felipe.movieapp.fragments;
+package br.felipe.movieapp.MovieDetail;
 
 import android.content.Intent;
 import android.net.Uri;

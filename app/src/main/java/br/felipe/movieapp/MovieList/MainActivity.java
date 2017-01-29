@@ -1,4 +1,4 @@
-package br.felipe.movieapp.activities;
+package br.felipe.movieapp.MovieList;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,16 +6,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import br.felipe.movieapp.MovieDetail.MovieDetailActivity;
 import br.felipe.movieapp.models.Movie;
-import br.felipe.movieapp.fragments.MovieGridFragment;
 import br.felipe.movieapp.R;
-import br.felipe.movieapp.fragments.MovieDetailFragment;
+import br.felipe.movieapp.MovieDetail.MovieDetailFragment;
 
 public class MainActivity extends AppCompatActivity implements MovieGridFragment.Callback {
 
     private static final String MOVIEDETAILFRAGMENT_TAG = "MOVIEDETAILFRAGTAG";
 
     boolean isTabletLayout;
+
+    MovieListPresenter movieListPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,9 @@ public class MainActivity extends AppCompatActivity implements MovieGridFragment
         }
         MovieGridFragment movieGridFragment = (MovieGridFragment) getSupportFragmentManager().findFragmentById(R.id.frag_movie_grid);
         movieGridFragment.setIsTabletLayout(isTabletLayout);
+
+        // Create the presenter
+        movieListPresenter = new MovieListPresenter(movieGridFragment, this);
 
     }
 

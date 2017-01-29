@@ -6,7 +6,7 @@
     android:orientation="horizontal">
 
     <fragment
-        android:name="br.felipe.movieapp.fragments.MovieGridFragment"
+        android:name="br.felipe.movieapp.MovieList.MovieGridFragment"
         android:id="@+id/frag_movie_grid"
         android:layout_width="0dp"
         android:layout_weight="1"
